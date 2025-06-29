@@ -135,4 +135,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Django documentation
 - Bootstrap documentation
-- Python Banao course instructors 
+- Python documentation
