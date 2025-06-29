@@ -1,0 +1,262 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}Doctor Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard-header {
+        background-color: var(--secondary-light);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .dashboard-header::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+        top: -100px;
+        right: -100px;
+        border-radius: 50%;
+    }
+    
+    .stat-card {
+        text-align: center;
+        padding: 1rem;
+        border-radius: 10px;
+        background: white;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition-normal);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--hover-shadow);
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .quick-actions .btn {
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h2 class="mb-2">Welcome, Dr. {{ user.get_full_name }}</h2>
+            <p class="text-muted mb-0">Your professional healthcare dashboard</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <div class="badge bg-success p-2">Doctor Account</div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Overview -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card h-100">
+            <div class="stat-icon bg-primary-light">
+                <i class="fas fa-calendar-check text-primary"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="text-muted">Today's Appointments</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card h-100">
+            <div class="stat-icon bg-success-light">
+                <i class="fas fa-user-injured text-success"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="text-muted">Active Patients</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card h-100">
+            <div class="stat-icon bg-info-light">
+                <i class="fas fa-file-medical-alt text-info"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="text-muted">Records Updated</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card h-100">
+            <div class="stat-icon bg-warning-light">
+                <i class="fas fa-pills text-warning"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="text-muted">Prescriptions Written</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Profile Information -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow h-100 dashboard-section">
+            <div class="card-header bg-success text-white">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-md me-2"></i>
+                    <h5 class="card-title mb-0">Profile Information</h5>
+                </div>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                    {% else %}
+                        <img src="{% static 'images/default-profile.png' %}" alt="Default Profile Picture" class="profile-picture">
+                    {% endif %}
+                </div>
+                
+                <h4>Dr. {{ user.get_full_name }}</h4>
+                <p class="badge bg-success mb-3">{{ user.get_user_type_display }}</p>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Username:</th>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Member Since:</th>
+                            <td>{{ user.date_joined|date:"F j, Y" }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Address Information -->
+    <div class="col-md-8 mb-4">
+        <div class="card shadow h-100 dashboard-section">
+            <div class="card-header bg-info text-white">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-address-card me-2"></i>
+                    <h5 class="card-title mb-0">Address Information</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5 class="border-bottom pb-2 mb-3">Contact Details</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong><i class="fas fa-user me-2"></i>First Name:</strong> {{ user.first_name }}</p>
+                            <p><strong><i class="fas fa-user me-2"></i>Last Name:</strong> {{ user.last_name }}</p>
+                            <p><strong><i class="fas fa-envelope me-2"></i>Email:</strong> {{ user.email }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="border-bottom pb-2 mb-3">Professional Address</h5>
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i><strong>Address Line:</strong> {{ user.address_line1 }}</p>
+                                    <p class="mb-1"><i class="fas fa-city me-2"></i><strong>City:</strong> {{ user.city }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1"><i class="fas fa-map me-2"></i><strong>State:</strong> {{ user.state }}</p>
+                                    <p class="mb-0"><i class="fas fa-map-pin me-2"></i><strong>Pincode:</strong> {{ user.pincode }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions Section -->
+<div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-bolt me-2"></i>
+            <h5 class="card-title mb-0">Quick Actions</h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3 col-6 quick-actions text-center">
+                <button class="btn btn-light w-100" disabled>
+                    <i class="fas fa-calendar-day mb-2 d-block fa-lg"></i>
+                    My Schedule
+                </button>
+            </div>
+            <div class="col-md-3 col-6 quick-actions text-center">
+                <button class="btn btn-light w-100" disabled>
+                    <i class="fas fa-user-injured mb-2 d-block fa-lg"></i>
+                    Patient List
+                </button>
+            </div>
+            <div class="col-md-3 col-6 quick-actions text-center">
+                <button class="btn btn-light w-100" disabled>
+                    <i class="fas fa-file-medical mb-2 d-block fa-lg"></i>
+                    Create Record
+                </button>
+            </div>
+            <div class="col-md-3 col-6 quick-actions text-center">
+                <button class="btn btn-light w-100" disabled>
+                    <i class="fas fa-prescription mb-2 d-block fa-lg"></i>
+                    Write Prescription
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Add animations to stat cards
+    document.addEventListener('DOMContentLoaded', function() {
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.stat-icon i');
+                icon.style.transform = 'scale(1.2)';
+                icon.style.transition = 'transform 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.stat-icon i');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    });
+</script>
+{% endblock %} 

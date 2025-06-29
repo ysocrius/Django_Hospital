@@ -1,0 +1,88 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white">
+                <h3 class="card-title mb-0">Admin Dashboard</h3>
+            </div>
+            <div class="card-body">
+                <h4>Welcome, {{ user.username }}</h4>
+                <p>This is the admin dashboard for superusers and system administrators.</p>
+                
+                {% if user.is_superuser %}
+                    <div class="alert alert-info">
+                        <h5>You are logged in as a superuser</h5>
+                        <p>You have access to the admin panel and full system privileges.</p>
+                        <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <h5>Your user account is missing a user type</h5>
+                        <p>Please contact an administrator to assign you a user type (patient or doctor).</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Account Information</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>Username:</th>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Staff Status:</th>
+                        <td>{% if user.is_staff %}Yes{% else %}No{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Superuser Status:</th>
+                        <td>{% if user.is_superuser %}Yes{% else %}No{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Login:</th>
+                        <td>{{ user.last_login }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0">Quick Links</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="{% url 'admin:index' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-cogs me-2"></i> Admin Panel
+                    </a>
+                    <a href="{% url 'admin:users_customuser_changelist' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-users me-2"></i> Manage Users
+                    </a>
+                    <a href="{% url 'register_choice' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-plus me-2"></i> Register New User
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

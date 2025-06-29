@@ -1,0 +1,517 @@
+/* Main CSS file for Healthcare System - Modern Professional Design */
+
+/* Custom colors and overrides - Enhanced medical palette */
+:root {
+    --primary-color: #2563eb;        /* Updated medical blue - primary brand color */
+    --primary-light: #dbeafe;        /* Lighter blue - backgrounds */
+    --secondary-color: #059669;      /* Healing green - secondary actions */
+    --secondary-light: #d1fae5;      /* Light green - success backgrounds */
+    --neutral-dark: #1f2937;         /* Dark gray - text */
+    --neutral-medium: #4b5563;       /* Medium gray - secondary text */
+    --neutral-light: #e5e7eb;        /* Light gray - borders */
+    --neutral-bg: #f9fafb;           /* Off-white - backgrounds */
+    --accent-color: #f59e0b;         /* Warm yellow - accents/warnings */
+    --danger-color: #dc2626;         /* Red - danger/errors */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-fast: all 0.2s ease;
+    --transition-normal: all 0.3s ease;
+}
+
+/* Body styling - clean canvas with improved font rendering */
+body {
+    background-color: var(--neutral-bg);
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    color: var(--neutral-dark);
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Enhanced readability */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--neutral-dark);
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    font-size: 2rem;
+    letter-spacing: -0.025em;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.text-muted {
+    color: var(--neutral-medium);
+}
+
+/* Spacing - Generous white space */
+.container {
+    padding: 2rem 1.5rem;
+    max-width: 1200px;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+/* Card styling - Clean and purposeful with enhanced shadows */
+.card {
+    border: none;
+    border-radius: 12px; 
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-normal);
+}
+
+.card.shadow {
+    box-shadow: var(--card-shadow);
+}
+
+.card.shadow:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-header {
+    font-weight: 500;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--primary-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-header.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.card-header.bg-success {
+    background-color: var(--secondary-color) !important;
+}
+
+.card-header.bg-info {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-color) !important;
+}
+
+.card-body {
+    padding: 1.75rem;
+}
+
+/* Form styling - Modern and focused */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--neutral-light);
+    padding: 0.85rem 1rem;
+    height: auto;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+    display: block;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border-color: var(--neutral-light);
+    color: var(--neutral-medium);
+}
+
+.input-group .form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group .form-control:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Button styling - Bold and modern */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.01rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #047857;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+/* Navbar customization - Modern and sticky */
+.navbar {
+    padding: 1rem 0;
+    background-color: #fff !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--neutral-dark) !important;
+    padding: 0.5rem 1.25rem;
+    transition: var(--transition-fast);
+    border-radius: 6px;
+    margin: 0 0.25rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+    background-color: var(--primary-light);
+}
+
+.navbar-nav button.nav-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Image styling */
+.img-thumbnail.rounded-circle {
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile picture styling - Enhanced */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    transition: var(--transition-normal);
+}
+
+.profile-picture:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.profile-picture-sm {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Table styling - More modern */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+    background-color: var(--neutral-bg);
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 1px solid var(--neutral-light);
+    text-align: left;
+    color: var(--neutral-medium);
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--neutral-light);
+    transition: var(--transition-fast);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover td {
+    background-color: rgba(0, 0, 0, 0.015);
+}
+
+/* Alert styling - More modern and accessible */
+.alert {
+    border-radius: 10px;
+    border: none;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.alert-info {
+    background-color: var(--primary-light);
+    color: #1e40af;
+}
+
+.alert-success {
+    background-color: var(--secondary-light);
+    color: #065f46;
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Utility classes */
+.text-bold {
+    font-weight: 600;
+}
+
+/* Required field marker */
+.required-field::after {
+    content: "*";
+    color: var(--danger-color);
+    margin-left: 4px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* Badge styling */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-success {
+    background-color: var(--secondary-color) !important;
+}
+
+/* List styling */
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-unstyled li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Form validation */
+.invalid-feedback {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-text {
+    color: var(--neutral-medium);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Welcome page enhancements */
+.display-4 {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--neutral-medium);
+}
+
+/* Card hover effects */
+.card.h-100 {
+    height: 100%;
+    transition: var(--transition-normal);
+}
+
+.card.h-100:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Welcome page card icons */
+.rounded-circle {
+    transition: var(--transition-normal);
+}
+
+.card:hover .rounded-circle {
+    transform: scale(1.1);
+}
+
+/* Add loading spinner */
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+    vertical-align: text-bottom;
+}
+
+/* Improved accessibility focus state */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Dashboard section styling */
+.dashboard-section {
+    margin-bottom: 2rem;
+    transition: var(--transition-normal);
+}
+
+.dashboard-section:hover {
+    transform: translateY(-3px);
+}
+
+/* Responsive improvements */
+@media (max-width: 767.98px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Dark mode support - can be toggled with a class on body */
+body.dark-mode {
+    --primary-color: #3b82f6;
+    --primary-light: #1e3a8a;
+    --secondary-color: #10b981;
+    --secondary-light: #064e3b;
+    --neutral-dark: #f9fafb;
+    --neutral-medium: #d1d5db;
+    --neutral-light: #374151;
+    --neutral-bg: #111827;
+    
+    background-color: var(--neutral-bg);
+    color: var(--neutral-dark);
+}
+
+body.dark-mode .card,
+body.dark-mode .navbar {
+    background-color: #1f2937 !important;
+}
+
+body.dark-mode .table th {
+    background-color: #374151;
+    color: var(--neutral-dark);
+}
+
+body.dark-mode .form-control {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: var(--neutral-dark);
+} 
